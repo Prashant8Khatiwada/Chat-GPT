@@ -1,29 +1,28 @@
 import express from "express";
-import * as dotenv from "dotenv";
+import env from "dotenv";
 import cors from "cors";
+import bodyParser from "body-parser";
 import { Configuration, OpenAIApi } from "openai";
 
 const app = express();
 
-dotenv.config();
+env.config();
 
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 
 // configure openai routes
 const configuration = new Configuration({
   organization: "org-Emp3hTYnEYDzVNi3cyTCzSVf",
-  apiKey: process.env.API_KEY,
+  apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
 
 // dummy routes to test
-app.get("/", async (req, res) => {
-  res.status(200).send({
-    message: "Hello from prashant",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello From Prashant");
+// });
 
 // post routes for  making request
 app.post("/", async (req, res) => {
@@ -32,19 +31,17 @@ app.post("/", async (req, res) => {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: `${message}`,
-      temperature: 0,
+      temperature: 0.5,
       max_tokens: 3000,
       top_p: 1,
       frequency_penalty: 0.5,
       presence_penalty: 0,
     });
 
-    res.status(200).send({
-      bot: response.data.choices[0].text,
-    });
+    res.json({ message: response.data.choices[0].text });
   } catch (error) {
     console.log(error);
-    res.status(500).send({ error });
+    res.status(400).send(error);
   }
 });
 
