@@ -71,6 +71,7 @@ h1 {
 }
 
 .textarea {
+  font-size: 1.3rem;
   background-color: #0f0f1dc2;
   width: 60%;
   height: 2rem;

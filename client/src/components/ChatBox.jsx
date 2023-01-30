@@ -8,13 +8,13 @@ function ChatBox({ chat }) {
           return (
             <div
               key={idx}
-              className={`${message.sender === "me"}` ? "user_box" : "ai_box"}
+              className={message.sender === "me" ? "user_box" : "ai_box"}
             >
               <div
                 className={
-                  `"message" ${message.sender === "me"}`
-                    ? "user_message"
-                    : "ai_message"
+                  message.sender === "me"
+                    ? "message user_message"
+                    : "message ai_message"
                 }
               >
                 <p>{message.message}</p>
