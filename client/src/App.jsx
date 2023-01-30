@@ -11,8 +11,8 @@ function App() {
     mutationFn: () => {
       return fetchResponse(chat);
     },
-    onSuccess: (data) => console.log(data),
-    onError: () => console.log("error"),
+    onSuccess: (data) =>
+      setChat((prev) => [...prev, { sender: "ai", message: data.message }]),
   });
 
   const sendMessage = async (message) => {

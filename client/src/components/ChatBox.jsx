@@ -6,8 +6,17 @@ function ChatBox({ chat }) {
       <div className="chatbox">
         {chat.map((message, idx) => {
           return (
-            <div key={idx} className="user_box">
-              <div className="message user_message">
+            <div
+              key={idx}
+              className={`${message.sender === "me"}` ? "user_box" : "ai_box"}
+            >
+              <div
+                className={
+                  `"message" ${message.sender === "me"}`
+                    ? "user_message"
+                    : "ai_message"
+                }
+              >
                 <p>{message.message}</p>
               </div>
             </div>
@@ -15,11 +24,11 @@ function ChatBox({ chat }) {
         })}
 
         {/* ai box chat  */}
-        {/* <div className="ai_box">
+        {/* <div className={`${message.sender === "ai"}` && "ai_box"}>
           <div className="message ai_message">
-            <p>yeah, I can help you with anything </p>
+            <p>message.message </p>
           </div>
-        </div>*/}
+        </div> */}
       </div>
     </>
   );

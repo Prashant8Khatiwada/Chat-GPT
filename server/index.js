@@ -14,15 +14,15 @@ app.use(bodyParser.json());
 // configure openai routes
 const configuration = new Configuration({
   organization: "org-Emp3hTYnEYDzVNi3cyTCzSVf",
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
 
 // dummy routes to test
-// app.get("/", (req, res) => {
-//   res.send("Hello From Prashant");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello From Prashant");
+});
 
 // post routes for  making request
 app.post("/", async (req, res) => {
@@ -34,7 +34,7 @@ app.post("/", async (req, res) => {
       temperature: 0.5,
       max_tokens: 3000,
       top_p: 1,
-      frequency_penalty: 0.5,
+      frequency_penalty: 0,
       presence_penalty: 0,
     });
 

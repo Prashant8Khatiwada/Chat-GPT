@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { BiSend } from "react-icons/bi";
-import { fetchResponse } from "../gptapi/FetchFromApi";
 function TextArea({ sendMessage }) {
   const [value, setValue] = useState("");
 
@@ -8,7 +7,7 @@ function TextArea({ sendMessage }) {
     if (value === "") {
       return;
     }
-    sendMessage({ user: "me", message: `${value}` });
+    sendMessage({ sender: "me", message: `${value}` });
     setValue("");
   };
   return (
