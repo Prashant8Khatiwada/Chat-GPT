@@ -2,7 +2,7 @@ body {
   background: #1f1f38;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 html {
@@ -25,6 +25,7 @@ h1 {
 }
 
 .chatbox {
+  scroll-behavior: smooth;
   margin: 1rem;
   height: 70vh;
 }

@@ -3,7 +3,12 @@ import * as dotenv from "dotenv";
 import cors from "cors";
 import { Configuration, OpenAIApi } from "openai";
 
+const app = express();
+
 dotenv.config();
+
+app.use(cors());
+app.use(express.json());
 
 // configure openai routes
 const configuration = new Configuration({
@@ -12,10 +17,6 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-
-const app = express();
-app.use(cors());
-app.use(express.json());
 
 // dummy routes to test
 app.get("/", async (req, res) => {
@@ -26,11 +27,11 @@ app.get("/", async (req, res) => {
 
 // post routes for  making request
 app.post("/", async (req, res) => {
-  const prompt = req.body.prompt;
+  const { message } = req.body;
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `${prompt}`,
+      prompt: `${message}`,
       temperature: 0,
       max_tokens: 3000,
       top_p: 1,
