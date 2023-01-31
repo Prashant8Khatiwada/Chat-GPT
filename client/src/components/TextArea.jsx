@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BiSend } from "react-icons/bi";
-function TextArea({ sendMessage }) {
+import Loader from "./Loader";
+function TextArea({ sendMessage, loading }) {
   const [value, setValue] = useState("");
 
   const handleSubmit = async () => {
@@ -12,18 +13,22 @@ function TextArea({ sendMessage }) {
   };
   return (
     <div className="textbox">
-      <textarea
-        row="1"
-        className="textarea"
-        type="text"
-        value={value}
-        placeholder="Type Your Text Here..."
-        onChange={(e) => setValue(e.target.value)}
-        onKeyDown={(e) => {
-          e.keyCode === 13 && e.shiftKey === false && handleSubmit();
-        }}
-        required
-      />
+      {loading ? (
+        <Loader />
+      ) : (
+        <textarea
+          row="1"
+          className="textarea"
+          type="text"
+          value={value}
+          placeholder="Type Your Text Here..."
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => {
+            e.keyCode === 13 && e.shiftKey === false && handleSubmit();
+          }}
+          required
+        />
+      )}
       <BiSend className="send_icon" onClick={handleSubmit} />
     </div>
   );

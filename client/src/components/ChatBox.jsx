@@ -1,9 +1,14 @@
-import React from "react";
+import { useRef, useEffect } from "react";
+import autoAnimate from "@formkit/auto-animate";
 
 function ChatBox({ chat }) {
+  const parent = useRef(null);
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
   return (
     <>
-      <div className="chatbox">
+      <div className="chatbox" ref={parent}>
         {chat.map((message, idx) => {
           return (
             <div

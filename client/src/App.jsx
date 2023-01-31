@@ -23,7 +23,7 @@ function App() {
     <>
       <Header />
       <ChatBox chat={chat} />
-      <TextArea sendMessage={sendMessage} />
+      <TextArea sendMessage={sendMessage} loading={mutation.isLoading} />
     </>
   );
 }

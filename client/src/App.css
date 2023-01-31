@@ -25,6 +25,7 @@ h1 {
 }
 
 .chatbox {
+  position: absolute;
   scroll-behavior: smooth;
   margin: 1rem 1rem 0 1rem;
   min-height: 70vh;
@@ -93,4 +94,43 @@ h1 {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   cursor: pointer;
+}
+
+/* ========== FOR LOADING ========== */
+
+.loading {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20%;
+}
+
+.loading span {
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: #ffd957;
+  border-radius: 50%;
+  display: inline-block;
+  animation-name: dots;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.loading span:nth-child(2) {
+  background-color: #57ffa0;
+  animation-delay: 0.4s;
+}
+
+.loading span:nth-child(3) {
+  background-color: #ff8b57;
+  animation-delay: 0.8s;
+}
+
+@keyframes dots {
+  50% {
+    opacity: 0;
+    transform: scale(0.7) translateY(10px);
+  }
 }
