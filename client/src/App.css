@@ -98,11 +98,8 @@ h1 {
 /* ========== FOR LOADING ========== */
 
 .loading span {
-  position: relative;
-  left: 50%;
-  top: 60%;
-  height: 25px;
-  width: 25px;
+  height: 15px;
+  width: 15px;
   margin: 0 5px;
   background-color: #ffd957;
   border-radius: 50%;
